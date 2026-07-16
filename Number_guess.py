@@ -1,39 +1,26 @@
-low = 0
-high = 50
+import random
 
-random_num = int(input("Enter the random number b/w 0 and 50: "))
+random_num = random.randint(0,100)
+user_attempt = 5
 
-if random_num<0 or random_num>50:
-    print("Invalid number!")
-    random_num = int(input("Enter again: "))
+print("Welcome to Number Guessing Game!\nYou have 5 attempts.")
+while user_attempt>0:
 
+    guess_num = int(input("Guess the number between 0 and 100: "))
 
-print("Number Guessing Game! \nYou have five attempts!")  
-
-guess_num = int(input("Ist attempt \nGuess the number: "))
-
-if guess_num == random_num:
-    print("Congrats!! you guess the correct number!")  
-else:
-    print("Wrong number!")
-    guess_num = int(input("2nd attempt \nGuess the number: "))
+    if guess_num == random_num:
+        print("Congratulations, You won the Game!!")
+        break
     
-    if guess_num==random_num:
-        print("Congrats!! you guess the correct number!")  
-    else:
-        print("Wrong number!")
-        guess_num = int(input("3rt attempt \nGuess the number again: "))
-        if guess_num==random_num:
-            print("Congrats!! you guess the correct number!")   
-        else:
-            print("Wrong number!")
-            guess_num = int(input("4th attempt \nGuess the number again: "))
-            if guess_num==random_num:
-                print("Congrats!! you guess the correct number!")  
-            else:
-                print("Wrong number!")
-                guess_num = int(input("Last attempt \nGuess the number again: "))
-                if guess_num==random_num:
-                    print("Congrats!! you guess the correct number!")   
-                else:
-                    print("You lost!")
+    elif guess_num>random_num:
+        user_attempt-=1
+        print("Too high!\nAttempts left:", user_attempt)
+    elif guess_num<random_num:
+        user_attempt-=1
+        print("Too low!\nAttempts left:", user_attempt)
+     
+     
+if user_attempt==0:
+    print("Game Over!")
+    print("The correct number is: ",random_num)
+    print("Better luck next time!")
